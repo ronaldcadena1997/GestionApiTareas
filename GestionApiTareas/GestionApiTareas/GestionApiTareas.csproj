@@ -1,0 +1,175 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>disable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<NoWarn>$(NoWarn);1591</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Entities\**" />
+	  <Content Remove="Entities\**" />
+	  <EmbeddedResource Remove="Entities\**" />
+	  <None Remove="Entities\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Remove="Controllers\AnioController.cs" />
+		<Compile Remove="Controllers\AppGMAController.cs" />
+		<Compile Remove="Controllers\CabezalController.cs" />
+		<Compile Remove="Controllers\ChasisController.cs" />
+		<Compile Remove="Controllers\ChoferController.cs" />
+		<Compile Remove="Controllers\CiudadController.cs" />
+		<Compile Remove="Controllers\ColorController.cs" />
+		<Compile Remove="Controllers\ConfiguracionParametrosController.cs" />
+		<Compile Remove="Controllers\DinamicQuestionsController.cs" />
+		<Compile Remove="Controllers\DiseniosController.cs" />
+		<Compile Remove="Controllers\EjeController.cs" />
+		<Compile Remove="Controllers\EmpresaController.cs" />
+		<Compile Remove="Controllers\EstadoController.cs" />
+		<Compile Remove="Controllers\GeneradorController.cs" />
+		<Compile Remove="Controllers\HistoricoInspeccionLlantaController.cs" />
+		<Compile Remove="Controllers\InspeccionesController.cs" />
+		<Compile Remove="Controllers\LlantaController.cs" />
+		<Compile Remove="Controllers\LlantaInspeccionController.cs" />
+		<Compile Remove="Controllers\LlantaVehiculoAsignadoController.cs" />
+		<Compile Remove="Controllers\MarcasController.cs" />
+		<Compile Remove="Controllers\MedidasController.cs" />
+		<Compile Remove="Controllers\ModelosController.cs" />
+		<Compile Remove="Controllers\MontajeLlantasController.cs" />
+		<Compile Remove="Controllers\PaisController.cs" />
+		<Compile Remove="Controllers\PermisosCuentasController.cs" />
+		<Compile Remove="Controllers\ProvinciaController.cs" />
+		<Compile Remove="Controllers\RecepcionVehiculosController.cs" />
+		<Compile Remove="Controllers\ReencaucheController.cs" />
+		<Compile Remove="Controllers\ReportesController.cs" />
+		<Compile Remove="Controllers\RootController.cs" />
+		<Compile Remove="Controllers\TipoCreacionPedidoController.cs" />
+		<Compile Remove="Controllers\TipoEstructuraController.cs" />
+		<Compile Remove="Controllers\TiposController.cs" />
+		<Compile Remove="Controllers\TipoSolicitudPedidoController.cs" />
+		<Compile Remove="Controllers\VehiculoController.cs" />
+		<Compile Remove="Servicios\AnioService.cs" />
+		<Compile Remove="Servicios\AppGmaInspeccionesLLantasServices.cs" />
+		<Compile Remove="Servicios\AppGmaMontajeLLantasServices.cs" />
+		<Compile Remove="Servicios\ChasisService.cs" />
+		<Compile Remove="Servicios\ChoferService.cs" />
+		<Compile Remove="Servicios\CiudadService.cs" />
+		<Compile Remove="Servicios\ColorService.cs" />
+		<Compile Remove="Servicios\ConfiguracionParametrosService.cs" />
+		<Compile Remove="Servicios\DiseniosService.cs" />
+		<Compile Remove="Servicios\EjesService.cs" />
+		<Compile Remove="Servicios\EmpresaService.cs" />
+		<Compile Remove="Servicios\EnviarCorreo.cs" />
+		<Compile Remove="Servicios\EstadoService.cs" />
+		<Compile Remove="Servicios\ExportarDatosExcel.cs" />
+		<Compile Remove="Servicios\FileManager.cs" />
+		<Compile Remove="Servicios\FirebaseService.cs" />
+		<Compile Remove="Servicios\GeneradorService.cs" />
+		<Compile Remove="Servicios\HistoricoInspeccionLlantaService.cs" />
+		<Compile Remove="Servicios\InspeccionService.cs" />
+		<Compile Remove="Servicios\LlantaInspeccionService.cs" />
+		<Compile Remove="Servicios\LlantaService.cs" />
+		<Compile Remove="Servicios\LlantaVehiculoAsignadoService.cs" />
+		<Compile Remove="Servicios\MarcasService.cs" />
+		<Compile Remove="Servicios\MedidasService.cs" />
+		<Compile Remove="Servicios\ModelosService.cs" />
+		<Compile Remove="Servicios\MontajeLlantasService.cs" />
+		<Compile Remove="Servicios\PaisService.cs" />
+		<Compile Remove="Servicios\PlacaService.cs" />
+		<Compile Remove="Servicios\ProvinciaService.cs" />
+		<Compile Remove="Servicios\RecepcionVehiculoService.cs" />
+		<Compile Remove="Servicios\ReencaucheService.cs" />
+		<Compile Remove="Servicios\ReportesServices.cs" />
+		<Compile Remove="Servicios\ServicioNovedad.cs" />
+		<Compile Remove="Servicios\TipoCreacionPedidoService.cs" />
+		<Compile Remove="Servicios\TipoEstructuraService.cs" />
+		<Compile Remove="Servicios\TipoSolicitudPedidoService.cs" />
+		<Compile Remove="Servicios\TiposService.cs" />
+		<Compile Remove="Servicios\VehiculoService.cs" />
+		<Compile Remove="Servicios\VersionGmaService.cs" />
+		<Compile Remove="ViewModel\AnioViewModels.cs" />
+		<Compile Remove="ViewModel\AppGmaInspeccionesLlantasViewModel.cs" />
+		<Compile Remove="ViewModel\AppGmaMontajeLlantasViewModel.cs" />
+		<Compile Remove="ViewModel\ChasisViewModels.cs" />
+		<Compile Remove="ViewModel\ChoferViewModels.cs" />
+		<Compile Remove="ViewModel\CiudadViewModel.cs" />
+		<Compile Remove="ViewModel\ColorViewModels.cs" />
+		<Compile Remove="ViewModel\ConfiguracionParametrosViewModels.cs" />
+		<Compile Remove="ViewModel\CreacionPedidoViewModel.cs" />
+		<Compile Remove="ViewModel\DisenioViewModels.cs" />
+		<Compile Remove="ViewModel\EjeViewModels.cs" />
+		<Compile Remove="ViewModel\EmpresaViewModels.cs" />
+		<Compile Remove="ViewModel\EstadoViewModel.cs" />
+		<Compile Remove="ViewModel\GeneradorViewModels.cs" />
+		<Compile Remove="ViewModel\HistoricoInspeccionLlantaViewModel.cs" />
+		<Compile Remove="ViewModel\InspeccionesViewModel.cs" />
+		<Compile Remove="ViewModel\ItemSeccionLlantaViewModel.cs" />
+		<Compile Remove="ViewModel\LLantaDisponibleViewModel.cs" />
+		<Compile Remove="ViewModel\LlantasInspeccionesViewModels.cs" />
+		<Compile Remove="ViewModel\LlantasVehiculosViewModels.cs" />
+		<Compile Remove="ViewModel\LlantasViewModels.cs" />
+		<Compile Remove="ViewModel\MarcaViewModels.cs" />
+		<Compile Remove="ViewModel\MedidaViewModels.cs" />
+		<Compile Remove="ViewModel\ModeloViewModels.cs" />
+		<Compile Remove="ViewModel\MontajeLLantaViewModel.cs" />
+		<Compile Remove="ViewModel\NovedadesViewModel.cs" />
+		<Compile Remove="ViewModel\PaisViewModels.cs" />
+		<Compile Remove="ViewModel\PlacaViewModels.cs" />
+		<Compile Remove="ViewModel\ProvinciaViewModels.cs" />
+		<Compile Remove="ViewModel\ReportesLLantaViewModel.cs" />
+		<Compile Remove="ViewModel\TipCreacionPedidoViewModel.cs" />
+		<Compile Remove="ViewModel\TipoEstructuraViewModel.cs" />
+		<Compile Remove="ViewModel\TipoSolicitudPedidoViewModel.cs" />
+		<Compile Remove="ViewModel\TipoViewModels.cs" />
+		<Compile Remove="ViewModel\VehiculoViewModels.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Include="Entities\ApplicationUser.cs" />
+	  <Compile Include="Entities\ArchivoTMS.cs" />
+	  <Compile Include="Entities\CrudEntities.cs" />
+	  <Compile Include="Entities\Pantallas.cs" />
+	  <Compile Include="Entities\PermisosPantalla.cs" />
+	  <Compile Include="Entities\RolesUsers.cs" />
+	  <Compile Include="Entities\SeccionPantalla.cs" />
+	  <Compile Include="Entities\TaskEstudiantes.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+		<PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.7" />
+		<PackageReference Include="AWSSDK.S3" Version="3.7.305.3" />
+		<PackageReference Include="ClosedXML" Version="0.102.2" />
+		<PackageReference Include="DinkToPdf" Version="1.0.8" />
+		<PackageReference Include="DocumentFormat.OpenXml" Version="3.0.2" />
+		<PackageReference Include="EntityFramework" Version="6.4.4" />
+		<PackageReference Include="EPPlus" Version="7.1.2" />
+		<PackageReference Include="LinqKit" Version="1.2.5" />
+		<PackageReference Include="log4net" Version="2.0.15" />
+		<PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.21.0" />
+		<PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="6.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="8.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Serilog.AspNetCore" Version="8.0.0" />
+		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+		<PackageReference Include="RestSharp" Version="110.2.0" />
+		<PackageReference Include="RestSharp.Serializers.Utf8Json" Version="106.15.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="wwwroot\TemplateExcelReport\CargaDatos.xlsx" />
+		<None Include="wwwroot\TemplateExcelReport\ReporteGeneralMontajeLlantasFinal.xlsx" />
+	</ItemGroup>
+
+</Project>
