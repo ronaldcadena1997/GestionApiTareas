@@ -17,22 +17,54 @@ namespace GestionApiTareas.Servicios
         private readonly UserManager<ApplicationUser> context;
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly ApplicationDbContext _context;
-
-        public CuentaService(UserManager<ApplicationUser> context, RoleManager<IdentityRole>  roleManager , ApplicationDbContext contextRol)
+        private static string _usuario;
+        private static string _ip;
+        public CuentaService(UserManager<ApplicationUser> context, RoleManager<IdentityRole>  roleManager , ApplicationDbContext contextRol, string usuario, string ip)
         {
-          
+             _ip = ip;
+            _usuario = usuario;
             this.context = context;
             this.roleManager = roleManager;
             this._context = contextRol;
         }
 
+      
+        public UsuarioLista GetUsuarioUnico(string usuariosid)
+        {
+            try
+            {
+                var idUsuarios = context.Users.Where(x => x.Bloqueo != true && x.UserName == usuariosid).FirstOrDefault().Id;
 
+                UsuarioLista usuarios = context.Users
+
+                    .Where(x => !x.Bloqueo && x.Id == idUsuarios)
+                    .Select(x => new UsuarioLista
+
+                    {
+                        id = x.Id,
+                        nombre = x.FirstName != null ? x.FirstName : "",
+                        apellido = x.LastName,
+                        correo = x.Email,
+                        telefono = x.PhoneNumber,
+                        tipoRol = roleManager.Roles.Where(d => d.Id == _context.Set<IdentityUserRole<string>>().Where(ur => ur.UserId == x.Id).FirstOrDefault().RoleId).FirstOrDefault() != null
+                        ? roleManager.Roles.Where(d => d.Id == _context.Set<IdentityUserRole<string>>().Where(ur => ur.UserId == x.Id).FirstOrDefault().RoleId).FirstOrDefault().Name : "Sin Rol"
+                    })
+                    .OrderBy(c => c.nombre)
+                    .FirstOrDefault();
+                return usuarios;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+
+        }
         public List<UsuarioLista> GetUsuario()
         {
             try { 
             List<UsuarioLista> usuarios =  context.Users
                  
-                .Where(x => x.Bloqueo != true && x.Id != "cc6042d4-c71f-4b6a-80e5-c4b6c7a51c85")
+                .Where(x => !x.Bloqueo )
                 .Select(x => new UsuarioLista
 
                 {

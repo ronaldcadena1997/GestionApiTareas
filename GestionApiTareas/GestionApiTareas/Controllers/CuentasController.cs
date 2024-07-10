@@ -12,11 +12,13 @@ using GestionApiTareas.Entities;
 using GestionApiTareas.Servicios;
 using GestionApiTareas.ViewModel;
 using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
+using Microsoft.AspNetCore.Http;
 
 namespace GestionApiTareas.Controllers
 {
     [ApiController]
     [Route("api/cuentas")]
+  
     public class CuentasController : ControllerBase
     {
         private readonly UserManager<ApplicationUser> userManager;
@@ -24,6 +26,7 @@ namespace GestionApiTareas.Controllers
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly HashService hashService;
         private readonly IDataProtector dataProtector;
+        private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ApplicationDbContext _context;
         protected CuentaService _service;
@@ -34,22 +37,26 @@ namespace GestionApiTareas.Controllers
                                  IDataProtectionProvider dataProtectionProvider,
                                  HashService hashService,
                                  RoleManager<IdentityRole> roleManager,
-                                 ApplicationDbContext context)
+                                 ApplicationDbContext context,
+                                 IHttpContextAccessor httpContextAccessor)
         {
             this.userManager = userManager;
             this.configuration = configuration;
             this.signInManager = signInManager;
             this.hashService = hashService;
+            this._httpContextAccessor = httpContextAccessor;
             dataProtector = dataProtectionProvider.CreateProtector("algun_valor_aleatorio");
             _roleManager = roleManager;
             _context = context;
-            this._service = new CuentaService(userManager , roleManager , _context);
+            string userName = Task.Run(async () => (await userManager.FindByEmailAsync(httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type.Contains("email", StringComparison.CurrentCultureIgnoreCase))?.Value ?? ""))?.UserName ?? "Desconocido").Result;
+            var ip = "";
+            this._service = new CuentaService(userManager , roleManager , _context,userName , ip);
         }
 
         [HttpGet("encriptar")]
         public ActionResult Encriptar()
         {
-            var textoPlano = "Geovanny Andrade";
+            var textoPlano = "Melany Caicedo";
             var textoCifrado = dataProtector.Protect(textoPlano);
             var textoDesencriptado = dataProtector.Unprotect(textoCifrado);
             return Ok(new
@@ -70,7 +77,9 @@ namespace GestionApiTareas.Controllers
 
         [HttpGet("ListarUsuario")]
         public async Task<IActionResult> GetUsuarios() => Ok( _service.GetUsuario());
-
+        
+            [HttpGet("ListarUsuarioUnico")]
+        public async Task<IActionResult> GetListarUsuarioUnico(string usuariosid) => Ok(_service.GetUsuarioUnico(usuariosid));
 
         [HttpPost("GuardarUsuarios")]
         public async Task<IActionResult> GuardarUsuarios(UsuarioLista usuario) => Ok(await _service.SaveUsuarios(usuario));

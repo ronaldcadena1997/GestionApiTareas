@@ -5,7 +5,10 @@
         public string idEstuduante { get; set; }
         public string nombre { get; set; }
 
+        public long nota { get; set; }
         public string descripcion { get; set; }
+
+        public bool estadoNota { get; set; }    
 
         public long idTask { get; set; }
 
@@ -29,6 +32,8 @@
     {
         public string idEstuduante { get; set; }
         public string nombre { get; set; }
+
+        public long nota { get; set; }
 
         public string descripcion { get; set; }
 

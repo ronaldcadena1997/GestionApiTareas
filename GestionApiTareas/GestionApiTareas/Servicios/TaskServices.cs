@@ -23,6 +23,8 @@ namespace GestionApiTareas.Servicios
 .Select(x => new TaskViewModel
 {
     idTask = x.idTask,
+    nota = x.nota,
+   estadoNota = x.estadoNota,
     descripcion = x.descripcion,
     idEstuduante = x.idEstudiante,
     nombre = x.nombreEstuiante
@@ -30,8 +32,25 @@ namespace GestionApiTareas.Servicios
 .ToList();
 
 
+        public bool EstadoSubidaTask(long idTask)
+        {
+            using (var contexto = new ApplicationDbContext())
+            {
+                var TaskEncontradosD = contexto.TaskEstudiantes.Where(x => x.Activo && x.idTask == idTask).FirstOrDefault();
+                if (TaskEncontradosD == null)
+                    return false;
+           
+                TaskEncontradosD.estadoNota =true;
+                TaskEncontradosD.FechaModificacion = DateTime.Now;
+                TaskEncontradosD.UsuarioModificacion = _usuario;
+                TaskEncontradosD.IpModificacion = _ip;
+                TaskEncontradosD.SistemaModificacion = "Sistema de Tareas";
+                contexto.SaveChanges();
+                return true;
+            }
+        }
 
-        public  bool DeleteTask(long idTask)
+        public bool DeleteTask(long idTask)
         {
             using (var contexto = new ApplicationDbContext())
             {
@@ -68,6 +87,7 @@ namespace GestionApiTareas.Servicios
                     NesTask.nombreEstuiante = contexto.Users.Where(x => x.Bloqueo != true && x.Id == tarea.idEstuduante).FirstOrDefault().FirstName;
                     NesTask.descripcion = tarea.descripcion ;
                     NesTask.Activo = true;
+                    NesTask.nota = 0;
                     NesTask.FechaRegistro = DateTime.Now;
                     NesTask.UsuarioRegistro = _usuario;
                     NesTask.IpRegistro = _ip;
@@ -79,7 +99,8 @@ namespace GestionApiTareas.Servicios
                 {
                     TaskEncontrados.idEstudiante = tarea.idEstuduante;
                     TaskEncontrados.nombreEstuiante = contexto.Users.Where(x => x.Bloqueo != true && x.Id == tarea.idEstuduante).FirstOrDefault().FirstName;
-                  
+                    TaskEncontrados.nota = tarea.nota ;
+                    TaskEncontrados.estadoNota = true;
                     TaskEncontrados.descripcion = tarea.descripcion;
                     TaskEncontrados.Activo = true;
                     TaskEncontrados.FechaModificacion = DateTime.Now;

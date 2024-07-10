@@ -15,6 +15,10 @@ namespace GestionApiTareas.Entities
         [MaxLength(500)]
         public  string nombreEstuiante { get; set; }
 
+        public long nota { get; set; }
+
+        public bool estadoNota { get; set; }
+
 
         [MaxLength(500)]
         public string descripcion { get; set; }

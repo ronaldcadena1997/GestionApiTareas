@@ -41,8 +41,15 @@ namespace GestionApiTareas.Controllers
         [HttpPost("Registrar")]
         public async Task<IActionResult> NuevaTaskList(RegisterTaskViewModel tarea) => Ok(await _service.SaveTask(tarea));
 
+        
+
+           [HttpPost("EstadosSubidas")]
+        public async Task<IActionResult> EstadosSubidasD(long idTask) => Ok(_service.EstadoSubidaTask(idTask));
+
 
         [HttpPost("Deshabilitar")]
         public async Task<IActionResult> EliminaTask(long idTask) => Ok( _service.DeleteTask(idTask));
+  
+    
     }
 }
