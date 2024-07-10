@@ -131,6 +131,7 @@
 	  <Compile Include="Entities\ApplicationUser.cs" />
 	  <Compile Include="Entities\ArchivoTMS.cs" />
 	  <Compile Include="Entities\CrudEntities.cs" />
+	  <Compile Include="Entities\EFQM.cs" />
 	  <Compile Include="Entities\Pantallas.cs" />
 	  <Compile Include="Entities\PermisosPantalla.cs" />
 	  <Compile Include="Entities\RolesUsers.cs" />

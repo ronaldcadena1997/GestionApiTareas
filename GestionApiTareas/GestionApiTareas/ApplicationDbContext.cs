@@ -83,12 +83,13 @@ namespace GestionApiTareas
         public virtual DbSet<TaskEstudiantes> TaskEstudiantes { get; set; }
         public virtual DbSet<PermisosPantalla> PermisosPantalla { get; set; }
 
+        public DbSet<EFQM> EFQMs { get; set; }
         //public virtual DbSet<ItemSeccionEstrucutra> ItemSeccionEstrucutra { get; set; }
 
 
         //public virtual DbSet<ItemAcciones> ItemAcciones { get; set; }
 
-        
+
 
 
 
