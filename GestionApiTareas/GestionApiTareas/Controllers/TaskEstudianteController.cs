@@ -33,6 +33,10 @@ namespace GestionApiTareas.Controllers
             this._service = new TaskServices(userName, ip, context);
         }
 
+        
+
+             [HttpGet("ListaTaskViewModelEstudiante")]
+        public async Task<IActionResult> GetTaskEstudianteInfo(string idTask) => Ok(_service.ListaEstudianteInfo(idTask));
 
         [HttpGet("Listar")]
         public async Task<IActionResult> GetTaskEstudiante() => Ok( _service.GetAllTask());

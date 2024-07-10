@@ -1,5 +1,6 @@
 ﻿using GestionApiTareas.Entities;
 using GestionApiTareas.ViewModel;
+using System.Collections.Generic;
 using System.Data.Entity;
 
 namespace GestionApiTareas.Servicios
@@ -30,6 +31,34 @@ namespace GestionApiTareas.Servicios
     nombre = x.nombreEstuiante
 })
 .ToList();
+
+
+        public List<TaskViewModel> ListaEstudianteInfo(string idTask)
+        {
+
+            List<TaskViewModel> listas = null;
+
+            using (var contexto = new ApplicationDbContext())
+            {
+                var TaskEncontradosD = contexto.Users.Where(x => x.UserName == idTask).FirstOrDefault();
+                if (TaskEncontradosD == null)
+                    return listas;
+                var lista = context.TaskEstudiantes
+.Where(x => x.Activo &&  x.idEstudiante == TaskEncontradosD.Id)
+.Select(x => new TaskViewModel
+{
+    idTask = x.idTask,
+    nota = x.nota,
+    estadoNota = x.estadoNota,
+    descripcion = x.descripcion,
+    idEstuduante = x.idEstudiante,
+    nombre = x.nombreEstuiante
+})
+.ToList();
+
+                return lista;
+            }
+        }
 
 
         public bool EstadoSubidaTask(long idTask)
